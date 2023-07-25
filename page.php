@@ -23,14 +23,24 @@
           </p>
         </div>
     <?php } ?>
-<!-- 
-      <div class="page-links">
-        <h2 class="page-links__title"><a href="#">About Us</a></h2>
-        <ul class="min-list">
-          <li class="current_page_item"><a href="#">Our History</a></li>
-          <li><a href="#">Our Goals</a></li>
-        </ul>
-      </div> -->
+    
+          <div class="page-links">
+            <h2 class="page-links__title"><a href="<?=get_permalink($parent)?>"><?=get_the_title($parent)?></a></h2>
+            <ul class="min-list">
+              <?php
+              if ($parent) {
+                $parentId = $parent;
+              } else {
+                $parentId = get_the_ID();
+              }
+
+                wp_list_pages([
+                  "title_li" => null,
+                  "child_of" => $parentId
+                ]);
+              ?>
+            </ul>
+          </div>
 
       <div class="generic-content">
         <?=the_content()?>
