@@ -1,29 +1,31 @@
-<!-- For General Blog Template -->
-<?php get_header(); ?>
-    <div class="container container--narrow page-section">
-      <!-- Hello world! -->
-      <?php
-        while (have_posts()){
-          the_post();
-          echo the_title();
-      ?>
-      <div class="post-item">
-        <h2 class="headline headline--medium headline--post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        
-        <div class="metabox">
-          <p>Posted by <?php the_author_posts_link(); ?> on <?php the_time('n.j.F'); ?> in <?php echo get_the_category_list(' and '); ?></p>
-        </div>
+<?php
 
-        <div class="generic-content">
-          <?php the_content(); ?>
-        </div>
+  get_header();
+
+  while(have_posts()) {
+    the_post(); 
+?>
+    <div class="page-banner">
+      <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri("/images/ocean.jpg")?>)"></div>
+      <div class="page-banner__content container container--narrow">
+        <h1 class="page-banner__title"><?=the_title()?></h1>
       </div>
-      <?php
-        }
-      ?>
     </div>
+    
+    <div class="container container--narrow page-section">
+        <div class="metabox metabox--position-up metabox--with-home-link">
+          <p>
+            <a class="metabox__blog-home-link" href="<?=site_url("/blog")?>"><i class="fa fa-home" aria-hidden="true"></i> Blog Home</a> <span class="metabox__main">Posted by <?php the_author_posts_link(); ?> on <?php the_time('n.j.F'); ?> in <?php echo get_the_category_list(' and '); ?></span>
+          </p>
+        </div>
+      <div class="generic-content">
+        <?=the_content()?>
+      </div>
+      </div>
 
 
-  <?php get_footer();
+  <?php 
+  }
+  get_footer();
 
 ?>
