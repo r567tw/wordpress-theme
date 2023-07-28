@@ -18,3 +18,23 @@ function university_feature(){
 
 }
 add_action('after_setup_theme','university_feature');
+
+
+function university_post_type(){
+  register_post_type('event', array(
+    'public' => true,
+    'show_in_rest' => true,
+    'labels' => array(
+      'name' => 'Events',
+      'add_new_item' => 'Add New Event',
+      'edit_item'    => 'Edit Event',
+      'all_items'     => 'All Events',
+      'singular_name' => 'Event',
+      'add_new'       => 'Add New Event'
+    ),
+    // https://developer.wordpress.org/resource/dashicons/#sos
+    'menu_icon' =>  'dashicons-calendar'
+  ));
+
+}
+add_action("init","university_post_type");
