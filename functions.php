@@ -24,6 +24,8 @@ function university_post_type(){
   register_post_type('event', array(
     'public' => true,
     'show_in_rest' => true,
+    'rewrite' => array('slug' => "events"),
+    'has_archive' => true,
     'labels' => array(
       'name' => 'Events',
       'add_new_item' => 'Add New Event',
