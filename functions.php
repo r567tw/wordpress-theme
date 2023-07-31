@@ -22,6 +22,9 @@ add_action('after_setup_theme','university_feature');
 
 function university_post_type(){
   register_post_type('event', array(
+    'supports' => array(
+      'title','editor','excerpt'
+    ),
     'public' => true,
     'show_in_rest' => true,
     'rewrite' => array('slug' => "events"),
