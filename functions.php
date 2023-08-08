@@ -43,3 +43,12 @@ function university_post_type(){
 
 }
 add_action("init","university_post_type");
+
+function university_post_query($query){
+  if (!is_admin() AND $query->is_main_query()){
+    $query->set("posts_per_page",1);
+  }
+}
+add_filter("pre_get_posts","university_post_query");
+
+
