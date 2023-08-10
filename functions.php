@@ -15,7 +15,9 @@ function university_feature(){
   register_nav_menu('footer-1','Left Footer Menu Location');
   register_nav_menu('footer-2','Right Footer Menu Location');
   add_theme_support("title-tag");
+  add_theme_support("post-thumbnails");
 
+  add_image_size("r567tw",600,300,true);
 }
 add_action('after_setup_theme','university_feature');
 
@@ -23,7 +25,7 @@ add_action('after_setup_theme','university_feature');
 function university_post_type(){
   register_post_type('event', array(
     'supports' => array(
-      'title','editor','excerpt','custom-fields'
+      'title','editor','excerpt','custom-fields','thumbnail'
     ),
     'public' => true,
     'show_in_rest' => true,

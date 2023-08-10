@@ -19,6 +19,7 @@
           </p>
         </div>
       <div class="generic-content">
+        <?=the_post_thumbnail('r567tw')?>
         <?=the_content()?>
       </div>
       </div>
