@@ -53,4 +53,12 @@ function university_post_query($query){
 }
 add_filter("pre_get_posts","university_post_query");
 
+function foo_bar_custom_rest(){
+  register_rest_field('post','authorName',[
+    'get_callback' => function(){
+      return get_the_author();
+    }
+  ]);
+}
+add_action('rest_api_init','foo_bar_custom_rest');
 
