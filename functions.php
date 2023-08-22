@@ -62,3 +62,16 @@ function foo_bar_custom_rest(){
 }
 add_action('rest_api_init','foo_bar_custom_rest');
 
+function foo_bar_custom_route(){
+  register_rest_route('custom/v1','search',[
+    'methods' => WP_REST_SERVER::READABLE,
+    'callback' => 'customSearchResult' ,
+  ]);
+}
+
+function customSearchResult(){
+  return array("foo"=> "bar");
+}
+
+add_action('rest_api_init','foo_bar_custom_route');
+
